@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open MCT Tutorials</title>
+    <script src="tutorial.js"></script>
+    <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+    <ul class="telemetry">
+    	<li onclick="selectTelemetryPoint('pwrc')" class="telemetryPoint inactive" id="pwrc">Pwr.c</li>
+    	<li onclick="selectTelemetryPoint('pwrv')" class="telemetryPoint inactive" id="pwrv">Pwr.v</li>
+    	<li onclick="selectTelemetryPoint('both')" class="telemetryPoint active" id="both">Both</li>
+    </ul>
+    <div class="sort">
+    	<div class="title">Sorting</div>
+    	<div onclick="selectSorting('ascending')" class="order active" id="ascending">Ascending</div>
+    	<div onclick="selectSorting('descending')" class="order inactive" id="descending">Descending</div>
+    </div>
+    <div class="tableHolder">
+    	<div class="tableGroup">
+    		<div class="tableTitle">Historical Data</div>
+    		<table id="historicalTable"></table>
+    	</div>
+   		<div  class="tableGroup">
+   	 		<div class="tableTitle">Live Data</div>
+    		<table id="liveTable"></table>
+   		</div>
+    </div>
+</body>
+</html>
