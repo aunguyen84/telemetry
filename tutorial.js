@@ -11,10 +11,14 @@ ws.onmessage = function(msg) {
     let liveData = JSON.parse(msg.data);
     liveData.date = new Date(liveData.timestamp);
     liveTableData.push(liveData);
+    let templiveTableData = [...liveTableData];
+    if (selectedSorting === "descending") {
+  		templiveTableData.sort((a, b) => b.date - a.date); 
+  	}
     const liveTable = document.getElementById("liveTable");
     liveTable.innerHTML = "";
     let liveStr = "<tr><th>ID</th><th>Timestamp</th><th>Value</th></tr>";
-  	liveTableData.forEach(item => {
+  	templiveTableData.forEach(item => {
   		liveStr += "<tr><td>" + item.id + "</td><td>" + item.date + "</td><td>" + item.value + "</td></tr>";
   	});
 	liveTable.innerHTML = liveStr;
@@ -72,7 +76,7 @@ function loadTelemetry() {
   			}
   		}
   		if (selectedSorting === "descending") {
-  			processedResult.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); 
+  			processedResult.sort((a, b) => b.date - a.date); 
   		}
   		let historicalStr = "<tr><th>ID</th><th>Timestamp</th><th>Value</th></tr>";
   		processedResult.forEach(item => {
